@@ -208,3 +208,279 @@ public static int getCounter() {
     </div>
 
 
+====================================================================================================================
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<!-- /.website title -->
+<title>ReadyGo... | Registration Page</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="UTF-8" />
+<!-- CSS Files -->
+<link href="css/home.css">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet" media="screen">
+<link href="css/css-index-yellow.css" rel="stylesheet" media="screen">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+	<div style="background-image: url('images/car-banners3.jpg');">
+		<div class="overlay">
+			<div class="container">
+				<div class="col-md-12 text-center">
+					<!-- /.logo -->
+					<div class="wow fadeInDown" style="margin-top: 40px;">
+						<h1>
+							<a class="Page-head" href="index.html">ReadyGo...</a>
+						</h1>
+					</div>
+					<!-- /.main title -->
+					<h2 class="wow fadeInUp" style="margin-bottom: 50px; color: white;">
+						Driver Registration</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-center">
+			<br>
+			<h2 class="wow fadeInRight">Cab Operator Registration</h2>
+			<div class="title-line wow fadeInRight"></div>
+			<br>
+		</div>
+		<div class="row boxBack">
+			<div class="col-md-12">
+				<form method="post" action="/login" >
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<label> Name: </label> <input type="text"
+									class="form-control OperatorField" name="driverName" id="name"
+									onchange="validatename()" required><span
+									id="NameErrorMessage" style="color: red"></span>
+							</div>
+							<div class="col-md-6">
+								<label for="email">Email address:</label> <input type="email"
+									class="form-control OperatorField" name="eMail" id="email"
+									onchange="validateemail()" required> <span
+									id="EmailErrorMessage" style="color: red"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<label>Contact Number :</label> <input type="text"
+									class="form-control OperatorField" name="contact" id="number"
+									onchange="validatecontact()" required> <span
+									id="ContactErrorMessage" style="color: red"></span>
+							</div>
+							<div class="col-md-6">
+								<label>Gender:</label> <select
+									class="form-control OperatorField" name="gender" class="gender"
+									onchange="validategender" required>
+									<option>Male</option>
+									<option>Female</option>
+									<option>Others</option>
+
+								</select> <span id="genderErrorMsg" style="color: red"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<label>City: </label> <select class="form-control OperatorField"
+								name="city" id="city" required>
+								<option>Bangalore</option>
+								<option>Mangalore</option>
+								<option>Mysore</option>
+								<option>Coorg</option>
+								<option>Hampi</option>
+								<option>Udupi</option>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label>License: </label> <select
+								class="form-control OperatorField" name="license" id="license"
+								required>
+								<option value="1">Yes</option>
+								<option value="0">No</option>
+							</select>
+						</div>
+					</div>
+					<br> <label>Address: </label>
+					<textarea class="form-control OperatorField" rows="1"
+						name="address" id="address" required></textarea>
+
+					<div class="row">
+						<div class="col-md-6">
+							<label>Experience:</label> <input type="number" min="0" max="30"
+								class="form-control OperatorField" name="experiance" id="exp" required>
+						</div>
+						<div class="col-md-6">
+							<label>Password:</label> <input type="password"
+								class="form-control OperatorField" name="password" id="pass"
+								onchange="validatepass()" required> <span
+								id="PassErrorMsg" style="color: red"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<center>
+								<input type="submit" class="btn btn-primary signin"
+									value="Register" name="venReg">
+								<h1 style="color:blue; font-weight:bold;">${result }</h1>
+							</center>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+
+		<!-- /.javascript files -->
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-datetimepicker.min.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/jquery.sticky.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script>
+			new WOW().init();
+			
+			function validatename() {
+				var namevalidate = document.getElementById("name").value;
+				var pattern = "^[A-Za-z]+$";
+				if (!namevalidate.match(pattern)) {
+					document.getElementById("NameErrorMessage").innerHTML = "Name should only be in alphabets";
+					return false;
+				} else {
+					document.getElementById("NameErrorMessage").innerHTML = "";
+					return true;
+				}
+			}
+			function validateemail() {
+				var emailvalidate = document.getElementById("email").value;
+				var pattern = "[a-zA-Z0-9._%+-]+[@]{1}[a-zA-Z]+(.com|.co.in)";
+				if (!emailvalidate.match(pattern)) {
+					document.getElementById("EmailErrorMessage").innerHTML = "Email should be in correct format";
+					return false;
+				} else {
+					document.getElementById("EmailErrorMessage").innerHTML = "";
+					return true;
+				}
+
+			}
+			function validatecontact() {
+				var contactvalidate = document.getElementById("number").value;
+				var pattern = "^[0-9]{10}$";
+				if (!contactvalidate.match(pattern)) {
+					document.getElementById("ContactErrorMessage").innerHTML = "Contact should only be in 10 digits";
+					return false;
+				} else {
+					document.getElementById("ContactErrorMessage").innerHTML = "";
+					return true;
+				}
+			}
+			function validatepass() {
+				var passvalidate = document.getElementById("pass").value;
+				var pattern = "[A-Za-z]{1}[0-9A-Za-z*!@#$%]{7,}";
+				if (!passvalidate.match(pattern)) {
+					document.getElementById("PassErrorMsg").innerHTML = "Password should be atleast 8 characters";
+					return false;
+				} else {
+					document.getElementById("PassErrorMsg").innerHTML = "";
+					return true;
+				}
+			}
+			
+		</script>
+</body>
+</html>
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+private int driverId;
+private String driverName;
+private long contact;
+private String eMail;
+private String address;
+private String city;
+private String password;
+private String license;
+private int experiance;
+private String gender;
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+public String postDriver(Driver driver) {
+		// TODO Auto-generated method stub
+		return dao.postDriver(driver);
+	}
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+public String postDriver(Driver driver) {
+			// TODO Auto-generated method stub
+			try {
+				// step 3 Create Statement
+				Connection con = connectTODB();
+				PreparedStatement stmt = con.prepareStatement("insert into drivers values(?,?,?,?,?,?,?,?,?,?)");
+				stmt.setInt(1, getCounter());
+				stmt.setString(2, driver.getDriverName());
+				stmt.setLong(3, driver.getContact());
+				stmt.setString(4, driver.geteMail());
+				stmt.setString(5, driver.getAddress());
+				stmt.setString(6, driver.getCity());
+				stmt.setString(7, driver.getPassword());
+				stmt.setString(8, driver.getLicense());
+				stmt.setInt(9, driver.getExperiance());
+				stmt.setString(10,driver.getGender());
+				
+				int affectedrows = stmt.executeUpdate();
+				System.out.println(affectedrows+" Affected rows");
+				con.close();
+				//step 4 execute sql Query
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block 
+				e.printStackTrace();
+			}
+			return "Registration successful";
+		}
+		
+		public int getCounter() {
+			// TODO Auto-generated method stub
+			Connection con = connectTODB();
+			int count = 1;
+			try {
+				PreparedStatement stmt = con.prepareStatement("select max(driverId) from drivers");
+				ResultSet rs=stmt.executeQuery();
+				while(rs.next()) {
+					count=rs.getInt(1);
+					count++;
+				}
+	  // throw error: Invalid column index
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return count;
+		}
