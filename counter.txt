@@ -1,0 +1,178 @@
+public static int getCounter() {
+		// TODO Auto-generated method stub
+		Connection conn = connectToDB();
+		int count = 1;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("select max(cabId) from Cabs");
+			while(rs.next()) {
+				count=rs.getInt(1);
+				count++;
+			}
+  // throw error: Invalid column index
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ReadyGo | Cab Operator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta charset="UTF-8" />
+    <!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" media="screen">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/stacktable.css" rel="stylesheet" media="screen">
+    <link href="css/css-index-yellow.css" rel="stylesheet" media="screen">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
+
+</head>
+
+<body>
+    <!-- /.parallax full screen background image -->
+    <div class="fullscreen landing parallax blog-page" style="background-image:url('images/car-banners3.jpg');"
+        data-img-width="2000" data-img-height="1333" data-diff="100">
+
+        <div class="overlay">
+            <div class="container">
+                <div class="col-md-10 col-md-offset-1">
+                    <!-- /.logo -->
+                    <div class="logo wow fadeInDown" style="margin-top: 50px">
+                        <a href="index.php"><img src="images/mp_logo.png" alt="logo"></a>
+                    </div>
+                    <!-- /.main title -->
+                    <h2 class="wow fadeInUp" style="margin-bottom: 50px">
+                        Cab Operator Page
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-center"><br>
+            <h2 class="wow fadeInRight">Cab Operator Registration</h2>
+            <div class="title-line wow fadeInRight"></div><br>
+        </div>
+        <div class="row boxBack">
+            <div class="col-md-12">
+                <form method="post" action="" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label> First Name: </label>
+                                <input type="text" class="form-control OperatorField" name="fName" id="Fname" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name: </label>
+                                <input type="text" class="form-control OperatorField" name="lName" id="Lname" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="email">Email address:</label>
+                                <input type="email" class="form-control OperatorField" name="email" id="email">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Date of Birth:</label>
+                                <input type="date" class="form-control OperatorField" name="dob" id="Bdate" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Contact Number :</label>
+                                <input type="text" class="form-control OperatorField" name="cn1" id="number1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Gender:</label>
+                                <select class="form-control OperatorField" name="gender" id="gender" required>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Id Type: </label>
+                            <select class="form-control OperatorField" name="idtype" id="gender" required>
+                                <option>Aadhaar Card</option>
+                                <option>Pan Card</option>
+                                <option>Voter Id</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Id Number: </label>
+                            <input type="text" class="form-control OperatorField" name="idno" id="idNo" required>
+                        </div>
+                    </div>
+                        
+                    <label>Address: </label>
+                    <textarea class="form-control OperatorField" rows="1" name="add" id="address" required></textarea>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Photo:</label>
+                            <input type="file" class="form-control OperatorField" name="image2" id="photo">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Password:</label>
+                            <input type="password" class="form-control OperatorField" name="pass" id="pass" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <center><input type="submit" class="btn btn-primary signin" value="Register" name="venReg"></center>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><br><br>
+    </div>
+   
+    <!-- /.javascript files -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>
+
+
+
+
+
