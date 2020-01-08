@@ -1,0 +1,18 @@
+public static int getCounter() {
+		// TODO Auto-generated method stub
+		Connection conn = connectToDB();
+		int count = 1;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("select max(cabId) from Cabs");
+			while(rs.next()) {
+				count=rs.getInt(1);
+				count++;
+			}
+  // throw error: Invalid column index
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
